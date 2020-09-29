@@ -1,7 +1,5 @@
 from flask import Flask
-
-# __name__ references the name of the file, in this case
-# hello.py
+from .db_model import db
 
 def create_app():
     '''
@@ -10,6 +8,9 @@ def create_app():
     '''
 
     app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////Users/charliemay/Desktop/Lambda/DSPT7/DSPT7-Twitoff/twitoff/twitoff.sqlite" # using absolute filepath on Mac (recommended)
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.init_app(app)
 
     @app.route('/')
     def root():
