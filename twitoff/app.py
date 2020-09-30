@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from .db_model import db
 
 def create_app():
@@ -14,6 +14,6 @@ def create_app():
 
     @app.route('/')
     def root():
-        return 'Welcome to Twitoff!'
+        return render_template('base.html')
 
     return app
