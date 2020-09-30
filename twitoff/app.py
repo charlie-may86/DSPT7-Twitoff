@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from .db_model import db
+from .db_model import db, User
 
 def create_app():
     '''
@@ -14,6 +14,6 @@ def create_app():
 
     @app.route('/')
     def root():
-        return render_template('base.html')
+        return render_template('base.html', title='Home', user=User.query.all())
 
     return app

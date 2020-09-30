@@ -15,6 +15,16 @@ FLASK_APP=twitoff flask run
 ```sh
 FLASK_APP=twitoff:APP flask shell
 ```
+# To create database
+```sh
+from twitoff.db_model import db, User, Tweet
+db.create_all()
+u1 = User(username='austen', follower_count=135000)
+db.session.add(u1)
+db.session.commit()
+```
+
+
 
 # reference page for flask-sql alchemy
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/ 

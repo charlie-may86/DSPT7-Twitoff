@@ -20,10 +20,11 @@ class User(db.Model):
 
 class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Unicode(300))
+    tweet = db.Column(db.String(300), unique=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', backref=db.backref('tweet', lazy=True))
-
+    
     # this is called a dunder method
     def __repr__(self):
-        return '<Tweet %r>' % self.text
+        return '<Tweet %r>' % self.tweet
 
