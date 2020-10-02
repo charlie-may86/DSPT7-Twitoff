@@ -16,4 +16,12 @@ def create_app():
     def root():
         return render_template('base.html', title='Home', user=User.query.all())
 
+    @app.route('/<username>/<followers>')
+    def add_user(username, followers):
+        user = User(username=username, followers=followers)
+        DB.session.add(user)
+        DB.session.commit()
+
+        return f'{username} has been added to the DB!'
+
     return app

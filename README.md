@@ -24,6 +24,14 @@ db.session.add(u1)
 db.session.commit()
 ```
 
+# To add a tweet
+```sh
+tweet1 = Tweet(tweet='try this', user=u1)
+db.session.add(tweet1)
+db.session.commit()
+```
+The user and tweet must be made in the same session.
+
 
 
 # reference page for flask-sql alchemy
