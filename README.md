@@ -24,6 +24,12 @@ db.session.add(u1)
 db.session.commit()
 ```
 
+# To reset database
+```sh
+db.drop_all()
+db.create_all()
+```
+
 # To add a tweet and user in the same session
 ```sh
 tweet1 = Tweet(tweet='try this', user=u1)

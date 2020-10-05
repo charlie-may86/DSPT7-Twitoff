@@ -13,6 +13,10 @@ class User(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     follower_count  = db.Column(db.String(120), nullable=False)
+    '''Tweet id's are ordinal ints, so we can fetch most recent
+    which constanly update the total tweets
+    '''
+    newest_tweet_id = db.Column(db.BigInteger, nullable=False)
 
     # this is called a dunder method
     def __repr__(self):
@@ -21,6 +25,7 @@ class User(db.Model):
 class Tweet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tweet = db.Column(db.String(300), unique=True, nullable=False)
+    embedding = db.Column(db.PickleType, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', backref=db.backref('tweet', lazy=True))
     
