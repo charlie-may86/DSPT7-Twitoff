@@ -24,15 +24,24 @@ db.session.add(u1)
 db.session.commit()
 ```
 
-# To add a tweet
+# To add a tweet and user in the same session
 ```sh
 tweet1 = Tweet(tweet='try this', user=u1)
 db.session.add(tweet1)
 db.session.commit()
 ```
-The user and tweet must be made in the same session.
+The user and tweet must be made in the same session to add users in this way. If they are not made in the same session, the tweet cannot be associated with a user.
 
-
+# To add a tweet with a user made in a previous session
+```sh
+t1 = Tweet(tweet='text', user=User.query.filter_by(username='user').first())
+db.session.add(tweet1)
+db.session.commit()
+```
+# return all users
+```sh
+User.query.all()
+```
 
 # reference page for flask-sql alchemy
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/ 

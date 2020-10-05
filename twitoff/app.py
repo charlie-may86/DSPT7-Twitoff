@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from .db_model import db, User
 
 def create_app():
@@ -14,7 +14,7 @@ def create_app():
 
     @app.route('/')
     def root():
-        return render_template('base.html', title='Home', user=User.query.all())
+        return render_template('base.html', title='Home', users=User.query.all())
 
     @app.route('/<username>/<followers>')
     def add_user(username, followers):
