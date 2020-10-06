@@ -43,7 +43,7 @@ def create_app():
         if user1 == user2:
             message = 'Cannot compare a user to themelves'
         else:
-            predict = predict_user(user1, user2, tweet_text)
+            prediction = predict_user(user1, user2, tweet_text)
 
             message = f'''{tweet_text} is more likely to be said by 
                           {user1 if prediction else user2} than {user2 if prediction else user1}.'''
