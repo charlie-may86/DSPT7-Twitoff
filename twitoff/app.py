@@ -49,5 +49,10 @@ def create_app():
                           {user1 if prediction else user2} than {user2 if prediction else user1}.'''
 
         return render_template('predict.html', title='Prediction', message=message)
+    
+    @app.route('/reset')
+    def reset():
+        db.drop_all()
+        db.create_all()
 
     return app
