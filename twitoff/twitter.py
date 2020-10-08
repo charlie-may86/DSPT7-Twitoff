@@ -64,3 +64,8 @@ def add_user_tweepy(username):
     else:
         # If no errors happend than commit the records
         db.session.commit()
+
+def update_all_users():
+    '''This function updates Tweets for all users'''
+    for user in User.query.all():
+        add_user_tweepy(user.username)
