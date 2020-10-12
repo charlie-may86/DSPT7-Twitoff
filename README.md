@@ -51,3 +51,8 @@ User.query.all()
 
 # reference page for flask-sql alchemy
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/ 
+
+# To update heroku app
+```sp
+git push heroku master
+```
